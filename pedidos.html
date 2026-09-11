@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pedidos - Gas El Volcán</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-dark navbar-volcan mb-4">
+  <div class="container">
+    <span class="navbar-brand mb-0 h1 fw-bold">🔥 Gas El Volcán - Panel de Administración</span>
+    <a href="carrito.html" class="btn btn-outline-light btn-sm">+ Nuevo Pedido</a>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="card card-custom p-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h3 class="m-0">Historial de Pedidos</h3>
+      <button onclick="cargarPedidos()" class="btn btn-volcan btn-sm">
+        🔄 Actualizar Tabla
+      </button>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-hover table-custom align-middle">
+        <thead>
+        <tr>
+          <th>ID Pedido</th>
+          <th>Cliente</th>
+          <th>Dirección</th>
+          <th>Monto Total</th>
+          <th>Estado</th>
+          <th>Fecha</th>
+        </tr>
+        </thead>
+        <tbody id="tabla-pedidos">
+        <tr>
+          <td colspan="6" class="text-center">Cargando datos...</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script src="js/pedidos.js"></script>
+</body>
+</html>
