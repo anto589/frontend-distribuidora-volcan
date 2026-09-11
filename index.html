@@ -24,9 +24,35 @@
 
 <body>
 
-  <!-- Add your site or application content here -->
-  <p>Hello world! This is HTML5 Boilerplate.</p>
-  <script src="js/app.js"></script>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card card-custom p-4">
+        <h3 class="mb-3 text-center">Iniciar Sesion</h3>
+
+
+
+        <div class="mb-3">
+          <label for="email" class="form-label fw-bold">Email:</label>
+          <input type="text" id="email" class="form-control">
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label fw-bold">Password:</label>
+          <input type="password" id="password" class="form-control" placeholder="*******">
+        </div>
+
+
+        <button onclick="login()" class="btn btn-volcan w-100 py-2">
+          Login
+          </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/auth.js"></script>
 
 </body>
 

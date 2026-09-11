@@ -20,9 +20,13 @@ async function enviarPedidoBackend() {
     alert(" Por favor, ingresa una dirección de entrega.");
     return;
   }
+  let userStorageString = localStorage.getItem("user")
+
+  let userStorage = userStorageString ? JSON.parse(userStorageString) :
+    console.log('userStorage', userStorage)
 
   const pedidoData = {
-    idCliente: 1,
+    idCliente: userStorage.id,
     direccionEntrega: direccion,
     montoTotal: monto,
     estado: "PENDIENTE"
