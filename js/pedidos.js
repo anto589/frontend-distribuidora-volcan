@@ -3,7 +3,13 @@ async function cargarPedidos() {
   tabla.innerHTML = "<tr><td colspan='6'>Cargando...</td></tr>";
 
   try {
-    const response = await fetch("http://localhost:8080/api/pedidos");
+
+    let userStorageString = localStorage.getItem("user")
+
+    let userStorage = userStorageString ? JSON.parse(userStorageString) :
+      console.log('userStorage', userStorage)
+
+    const response = await fetch(`http://localhost:8080/api/pedidos/cliente/${userStorage.id}`);
 
     if (!response.ok) {
       throw new Error("Error en la respuesta de la API");

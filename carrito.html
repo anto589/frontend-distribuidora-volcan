@@ -6,15 +6,51 @@
   <title>Carrito - Gas El Volcán</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+
+  <script>
+    const usuarioJson = localStorage.getItem("user");
+
+    if (!usuarioJson) {
+      window.location.href = "index.html";
+    } else {
+      const usuario = JSON.parse(usuarioJson);
+      if (!usuario.id) {
+        localStorage.removeItem("user");
+        window.location.href = "index.html";
+      }
+    }
+  </script>
 </head>
 <body>
+
 
 <nav class="navbar navbar-dark navbar-volcan mb-4">
   <div class="container">
     <span class="navbar-brand mb-0 h1 fw-bold">🔥 Gas El Volcán</span>
-    <a href="pedidos.html" class="btn btn-outline-light btn-sm">Ver Historial de Pedidos</a>
+    <div>
+      <a href="pedidos.html" class="btn btn-outline-light btn-sm">Ver Historial de Pedidos</a>
+      <button id="btn-cerrar-sesion" class="btn btn-danger btn-sm" style="display: none;">Cerrar Sesión</button>
+    </div>
   </div>
 </nav>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const btnCerrarSesion = document.getElementById("btn-cerrar-sesion");
+    const userStorage = localStorage.getItem("user");
+
+    if (userStorage) {
+      btnCerrarSesion.style.display = "inline-block";
+    }
+
+    btnCerrarSesion.addEventListener("click", () => {
+      localStorage.removeItem("user");
+      window.location.href = "index.html";
+    });
+  });
+</script>
+
+
 
 <div class="container">
   <div class="row justify-content-center">

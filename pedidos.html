@@ -6,15 +6,49 @@
   <title>Pedidos - Gas El Volcán</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+
+  <script>
+    const usuarioJson = localStorage.getItem("user");
+
+    if (!usuarioJson) {
+      window.location.href = "index.html"; // Cambia por la ruta de tu login
+    } else {
+      const usuario = JSON.parse(usuarioJson);
+      if (!usuario.id) {
+        localStorage.removeItem("user"); // Limpiamos datos corruptos
+        window.location.href = "index.html";
+      }
+    }
+  </script>
 </head>
 <body>
 
 <nav class="navbar navbar-dark navbar-volcan mb-4">
   <div class="container">
     <span class="navbar-brand mb-0 h1 fw-bold">🔥 Gas El Volcán - Panel de Administración</span>
-    <a href="carrito.html" class="btn btn-outline-light btn-sm">+ Nuevo Pedido</a>
+    <div>
+      <a href="carrito.html" class="btn btn-outline-light btn-sm me-2">+ Nuevo Pedido</a>
+      <button id="btn-cerrar-sesion" class="btn btn-danger btn-sm" style="display: none;">Cerrar Sesión</button>
+    </div>
   </div>
 </nav>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const btnCerrarSesion = document.getElementById("btn-cerrar-sesion");
+    const userStorage = localStorage.getItem("user");
+
+    if (userStorage) {
+      btnCerrarSesion.style.display = "inline-block";
+    }
+
+    btnCerrarSesion.addEventListener("click", () => {
+      localStorage.removeItem("user");
+      window.location.href = "index.html";
+    });
+  });
+</script>
+
 
 <div class="container">
   <div class="card card-custom p-4">
